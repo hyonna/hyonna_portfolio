@@ -1,0 +1,35 @@
+.container {
+  @include container;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  li {
+    display: grid;
+    place-items: center;
+  }
+  strong {
+    font-size: 40px;
+  }
+}
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.contact .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}

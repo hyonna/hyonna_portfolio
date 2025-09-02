@@ -1,7 +1,15 @@
 'use client'
 
+import Hero from './(sections)/Hero'
+import SectionWrapper from '../components/SectionWrapper'
+
 const Page = () => {
-  return <h1>Hello Next.js + pnpm</h1>
+  return (
+    <>
+      <Hero />
+      {/* <SectionWrapper /> */}
+    </>
+  )
 }
 
 export default Page
