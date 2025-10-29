@@ -4,7 +4,7 @@ import { Mail, ArrowUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { colors } from '@/lib/theme'
 
-export default function FloatingActions({ email = 'me@example.com' }: { email?: string }) {
+export default function FloatingActions({ email = 'yha0118@gmail.com' }: { email?: string }) {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
