@@ -153,8 +153,8 @@ vercel --prod
 
 ## 📞 연락처
 
-- **이메일**: me@example.com
-- **GitHub**: [@your-username](https://github.com/your-username)
+- **이메일**: yha0118@gmail.com
+- **GitHub**: [@hyonna](https://github.com/hyonna)
 - **포트폴리오**: [https://hyonna-portfolio.vercel.app](https://hyonna-portfolio.vercel.app)
 
 ---
