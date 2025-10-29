@@ -38,7 +38,7 @@ export default function Page() {
         </div>
       </footer>
       {/* 우하단 플로팅 액션 */}
-      <FloatingActions email="me@example.com" />
+      <FloatingActions email="yha0118@gmail.com" />
     </main>
   )
 }
