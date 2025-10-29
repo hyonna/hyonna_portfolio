@@ -1,13 +1,13 @@
 export const EDUCATION = {
-  schools: [{ name: '계원예술대학교 인터랙션&모션그래픽스', period: '2011. 02 ~ 2013. 02' }],
+  schools: [{ name: '계원예술대학교', major: '인터랙션&모션그래픽스', period: '2011. 02 ~ 2013. 02' }],
   courses: [
     {
-      title: 'Framework기반의 빅데이터 활용 응용프',
+      title: 'Framework기반의 빅데이터 활용 응용프로그래머 양성 과정',
       institution: '쌍용교육센터',
       period: '2019. 03 ~ 2019. 08'
     },
     {
-      title: '[ncs]웹표준 웹접근성 기반 ui/ux 웹디',
+      title: '[ncs]웹표준 웹접근성 기반 ui/ux 웹디자인',
       institution: '그린아카데미',
       period: '2016. 06 ~ 2016. 11'
     }

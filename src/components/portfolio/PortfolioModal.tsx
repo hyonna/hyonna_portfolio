@@ -1,22 +1,37 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { Work } from '@/types/work'
 import { colors } from '@/lib/theme'
+import ImageModal from './ImageModal'
+import { ExternalLink } from 'lucide-react'
 
 export default function PortfolioModal({ work, onClose }: { work: Work; onClose: () => void }) {
   const reduce = useReducedMotion()
+  const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null)
 
   // 모달이 열릴 때 body 스크롤 막기
   useEffect(() => {
     if (work) {
+      // 현재 스크롤 위치 저장
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
       document.body.style.overflow = 'hidden'
     }
 
     // 컴포넌트가 언마운트될 때 스크롤 복원
     return () => {
-      document.body.style.overflow = 'unset'
+      if (work) {
+        const scrollY = document.body.style.top
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        document.body.style.overflow = ''
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      }
     }
   }, [work])
 
@@ -74,12 +89,27 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
             ))}
           </div>
 
-          {/* 프로젝트 제목 */}
-          <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">{work.title}</h3>
+          {/* 프로젝트 제목과 링크 버튼 */}
+          <div className="flex items-center gap-2 mb-3">
+            <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{work.title}</h3>
+            {work.url && (
+              <a
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 rounded-lg hover:bg-white/10 transition-colors duration-200"
+                title="프로젝트 사이트로 이동"
+                aria-label="프로젝트 사이트로 이동"
+              >
+                <ExternalLink size={20} className="text-white/70 hover:text-white align-middle" />
+              </a>
+            )}
+          </div>
 
           {/* 프로젝트 상태 정보 */}
           <div className="flex items-center gap-6 mb-8 text-base text-white/70">
             <span className="font-medium">{work.status || '2025.06 - 진행 중'}</span>
+            <span className="text-white/50">|</span>
             <span className="font-medium">{work.teamInfo || '1인(솔로)'}</span>
           </div>
 
@@ -89,7 +119,7 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
           </div>
 
           {/* 대표 이미지 */}
-          <div className="mb-10">
+          {/* <div className="mb-10">
             <div
               className="w-full h-64 rounded-xl border flex items-center justify-center"
               style={{
@@ -108,7 +138,7 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
                 <p className="text-white/40 text-xs mt-1">이미지를 클릭하여 크게 볼 수 있습니다</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* 주요 기능 및 특징 */}
           <section className="mb-12" style={{ borderTop: `1px solid ${colors.border}`, paddingTop: '2rem' }}>
@@ -122,17 +152,34 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
               <h4 className="text-xl font-semibold">주요 기능 및 특징</h4>
             </div>
             <div className="pl-4">
-              <ul className="space-y-4 text-white/85">
-                {work.features?.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <div
-                      className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                      style={{ backgroundColor: colors.pink }}
-                    ></div>
-                    <span className="text-base">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-4 text-white/85">
+                {work.features?.map((feature, index) => {
+                  // 빈 줄인 경우 구분선으로 처리
+                  if (feature === '') {
+                    return <div key={index} className="h-2"></div>
+                  }
+
+                  // 섹션 헤더인 경우 (이모지가 포함된 경우)
+                  if (feature.match(/^[📋🎯⚙️🏥]/)) {
+                    return (
+                      <div key={index} className="flex items-center gap-3 mb-2 mt-6">
+                        <span className="text-lg font-semibold text-white/95">{feature}</span>
+                      </div>
+                    )
+                  }
+
+                  // 일반 항목인 경우
+                  return (
+                    <div key={index} className="flex items-start gap-4">
+                      <div
+                        className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                        style={{ backgroundColor: colors.pink }}
+                      ></div>
+                      <span className="text-base">{feature}</span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </section>
 
@@ -218,7 +265,7 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
 
           {/* 트러블슈팅 */}
           <section className="mb-12" style={{ borderTop: `1px solid ${colors.border}`, paddingTop: '2rem' }}>
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-8">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
                 style={{ backgroundColor: colors.border }}
@@ -227,53 +274,77 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
               </div>
               <h4 className="text-xl font-semibold">Trouble Shooting</h4>
             </div>
-            <div className="pl-4">
-              {/* 트러블슈팅 항목들 */}
+
+            {/* 트러블슈팅 항목들 */}
+            <div className="space-y-6">
               {work.troubleshooting?.map((item, index) => (
-                <div key={index} className="mb-8">
-                  <h5 className="text-lg font-medium mb-4 text-white/90">{item.title}</h5>
+                <div
+                  key={index}
+                  className="rounded-xl border p-6"
+                  style={{
+                    backgroundColor: `${colors.bg}30`,
+                    borderColor: colors.border
+                  }}
+                >
+                  {/* 제목 */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0"
+                      style={{ backgroundColor: colors.pink }}
+                    >
+                      {index + 1}
+                    </div>
+                    <h5 className="text-lg font-semibold text-white/95 leading-relaxed">{item.title}</h5>
+                  </div>
+
+                  {/* 문제점, 해결, 회고 카드들 */}
                   <div className="space-y-4">
-                    <div>
+                    {/* 문제점 */}
+                    <div
+                      className="p-4 border-l"
+                      style={{
+                        backgroundColor: `${colors.pink}10`,
+                        borderLeftColor: colors.pink,
+                        borderLeftWidth: '1px'
+                      }}
+                    >
                       <div className="flex items-center gap-3 mb-3">
-                        <span
-                          className="text-sm font-medium px-3 py-1 rounded-full"
-                          style={{
-                            backgroundColor: `${colors.pink}20`,
-                            color: colors.pink
-                          }}
-                        >
-                          [문제점]
-                        </span>
+                        <span className="text-lg">⚠️</span>
+                        <span className="text-sm font-semibold text-white/90">문제점</span>
                       </div>
-                      <p className="text-white/85 text-base leading-relaxed pl-2">{item.problem}</p>
+                      <p className="text-white/85 text-sm leading-relaxed ml-6">{item.problem}</p>
                     </div>
-                    <div>
+
+                    {/* 해결 */}
+                    <div
+                      className="p-4 border-l"
+                      style={{
+                        backgroundColor: `${colors.pinkSoft}10`,
+                        borderLeftColor: colors.pinkSoft,
+                        borderLeftWidth: '1px'
+                      }}
+                    >
                       <div className="flex items-center gap-3 mb-3">
-                        <span
-                          className="text-sm font-medium px-3 py-1 rounded-full"
-                          style={{
-                            backgroundColor: `${colors.pinkSoft}20`,
-                            color: colors.pinkSoft
-                          }}
-                        >
-                          [해결]
-                        </span>
+                        <span className="text-lg">✅</span>
+                        <span className="text-sm font-semibold text-white/90">해결 방법</span>
                       </div>
-                      <p className="text-white/85 text-base leading-relaxed pl-2">{item.solution}</p>
+                      <p className="text-white/85 text-sm leading-relaxed ml-6">{item.solution}</p>
                     </div>
-                    <div>
+
+                    {/* 회고 */}
+                    <div
+                      className="p-4 border-l"
+                      style={{
+                        backgroundColor: `${colors.pink}08`,
+                        borderLeftColor: colors.pink,
+                        borderLeftWidth: '1px'
+                      }}
+                    >
                       <div className="flex items-center gap-3 mb-3">
-                        <span
-                          className="text-sm font-medium px-3 py-1 rounded-full"
-                          style={{
-                            backgroundColor: `${colors.pink}15`,
-                            color: colors.pink
-                          }}
-                        >
-                          [회고]
-                        </span>
+                        <span className="text-lg">💡</span>
+                        <span className="text-sm font-semibold text-white/90">회고 및 학습</span>
                       </div>
-                      <p className="text-white/85 text-base leading-relaxed pl-2">{item.reflection}</p>
+                      <p className="text-white/85 text-sm leading-relaxed ml-6">{item.reflection}</p>
                     </div>
                   </div>
                 </div>
@@ -282,7 +353,7 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
           </section>
 
           {/* 작업 화면 */}
-          <section className="mb-8" style={{ borderTop: `1px solid ${colors.border}`, paddingTop: '2rem' }}>
+          {/* <section className="mb-8" style={{ borderTop: `1px solid ${colors.border}`, paddingTop: '2rem' }}>
             <div className="flex items-center gap-4 mb-6">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
@@ -293,79 +364,146 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
               <h4 className="text-xl font-semibold">작업 화면</h4>
             </div>
             <div className="pl-4">
-              <p className="text-base text-white/70 mb-4">
-                이미지 클릭시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)
+              <p className="text-base text-white/70 mb-6">
+                이미지 클릭 시 크게 볼 수 있으며, 작업화면이 현재와 다를 수 있습니다.
               </p>
-              <p className="text-sm text-white/50 mb-6">* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
 
-              {/* 작업 화면 그리드 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="text-center">
                   <div
-                    className="w-full h-32 rounded-lg flex items-center justify-center mb-2 border"
+                    className="w-full h-64 rounded-lg flex items-center justify-center mb-2 border cursor-pointer
+                               hover:scale-105 transition-transform duration-200"
                     style={{
                       backgroundColor: `${colors.bg}80`,
                       borderColor: colors.border
                     }}
+                    onClick={() =>
+                      setSelectedImage({
+                        url: 'https://picsum.photos/800/600?random=1',
+                        title: '리포트 생성 로딩 화면'
+                      })
+                    }
                   >
-                    <span className="text-white/40 text-sm">프로젝트 구현 화면</span>
+                    <img
+                      src="https://picsum.photos/400/300?random=1"
+                      alt="리포트 생성 로딩 화면"
+                      className="w-full h-full object-cover rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = '<span class="text-white/40 text-sm">프로젝트 구현 화면</span>'
+                        }
+                      }}
+                    />
                   </div>
                   <p className="text-xs text-white/60">리포트 생성 로딩 화면</p>
                 </div>
+
                 <div className="text-center">
                   <div
-                    className="w-full h-32 rounded-lg flex items-center justify-center mb-2 border"
+                    className="w-full h-64 rounded-lg flex flex-col items-center justify-center mb-2 border"
                     style={{
-                      backgroundColor: `${colors.bg}80`,
+                      backgroundColor: `${colors.bg}40`,
                       borderColor: colors.border
                     }}
                   >
-                    <span className="text-white/40 text-sm">프로젝트 구현 화면</span>
+                    <div
+                      className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                      style={{ backgroundColor: colors.border }}
+                    >
+                      <span className="text-2xl">🔒</span>
+                    </div>
+                    <p className="text-white/60 text-sm font-medium mb-1">저작권 이슈</p>
+                    <p className="text-white/40 text-xs">작업화면을 공개할 수 없습니다</p>
                   </div>
-                  <p className="text-xs text-white/60">마이페이지-월간화면</p>
+                  <p className="text-xs text-white/50">저작권 이슈가 있는 프로젝트</p>
                 </div>
+
                 <div className="text-center">
                   <div
-                    className="w-full h-32 rounded-lg flex items-center justify-center mb-2 border"
+                    className="w-full h-64 rounded-lg flex items-center justify-center mb-2 border cursor-pointer
+                               hover:scale-105 transition-transform duration-200"
                     style={{
                       backgroundColor: `${colors.bg}80`,
                       borderColor: colors.border
                     }}
+                    onClick={() =>
+                      setSelectedImage({
+                        url: 'https://picsum.photos/800/600?random=3',
+                        title: '당일 습관리포트화면'
+                      })
+                    }
                   >
-                    <span className="text-white/40 text-sm">프로젝트 구현 화면</span>
+                    <img
+                      src="https://picsum.photos/400/300?random=3"
+                      alt="당일 습관리포트화면"
+                      className="w-full h-full object-cover rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = '<span class="text-white/40 text-sm">프로젝트 구현 화면</span>'
+                        }
+                      }}
+                    />
                   </div>
                   <p className="text-xs text-white/60">당일 습관리포트화면</p>
                 </div>
+
                 <div className="text-center">
                   <div
-                    className="w-full h-32 rounded-lg flex items-center justify-center mb-2 border"
+                    className="w-full h-64 rounded-lg flex items-center justify-center mb-2 border cursor-pointer
+                               hover:scale-105 transition-transform duration-200"
                     style={{
                       backgroundColor: `${colors.bg}80`,
                       borderColor: colors.border
                     }}
+                    onClick={() =>
+                      setSelectedImage({
+                        url: 'https://picsum.photos/800/600?random=4',
+                        title: '마이페이지-주간화면'
+                      })
+                    }
                   >
-                    <span className="text-white/40 text-sm">프로젝트 구현 화면</span>
+                    <img
+                      src="https://picsum.photos/400/300?random=4"
+                      alt="마이페이지-주간화면"
+                      className="w-full h-full object-cover rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = '<span class="text-white/40 text-sm">프로젝트 구현 화면</span>'
+                        }
+                      }}
+                    />
                   </div>
                   <p className="text-xs text-white/60">마이페이지-주간화면</p>
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* 링크 섹션 */}
-          {work.url && (
-            <div className="pt-4" style={{ borderTop: `1px solid ${colors.border}` }}>
-              <h4 className="text-lg font-semibold mb-2">Links</h4>
+          <div className="pt-4" style={{ borderTop: `1px solid ${colors.border}` }}>
+            <h4 className="text-lg font-semibold mb-2">Links</h4>
+            {work.url ? (
               <a
                 href={work.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline decoration-pink-400/50 hover:decoration-pink-400 text-white/80"
               >
-                Project URL
+                {work.url}
               </a>
-            </div>
-          )}
+            ) : (
+              <p className="text-white/60 text-sm">보안 정책상 외부 공개가 제한된 프로젝트입니다.</p>
+            )}
+          </div>
         </div>
       </motion.div>
 
@@ -388,6 +526,15 @@ export default function PortfolioModal({ work, onClose }: { work: Work; onClose:
       >
         ×
       </motion.button>
+
+      {/* 이미지 모달 */}
+      {selectedImage && (
+        <ImageModal
+          imageUrl={selectedImage.url}
+          imageTitle={selectedImage.title}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </div>
   )
 }

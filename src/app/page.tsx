@@ -25,7 +25,7 @@ export default function Page() {
       <Section id="career" title="Career" icon={Briefcase}>
         <CareerGrid />
       </Section>
-      <Section id="portfolio" title="Portfolio" icon={ExternalLink}>
+      <Section id="portfolio" title="" icon={ExternalLink}>
         <PortfolioGrid />
       </Section>
       <Section id="education" title="Education" icon={GraduationCap}>
@@ -33,8 +33,8 @@ export default function Page() {
       </Section>
       <footer className="py-12">
         <div className="max-w-5xl mx-auto px-6 flex items-center justify-between text-sm text-white/50">
-          {/* 기존: © {new Date().getFullYear()} Hyun Ah Yoon */}
           <span>Copyright 2025. yoonhyuna all rights reserved.</span>
+          <span>이 웹 포트폴리오 사이트는 Cursor를 활용해 개발되었습니다.</span>
         </div>
       </footer>
       {/* 우하단 플로팅 액션 */}

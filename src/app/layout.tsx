@@ -1,11 +1,19 @@
 import './globals.css'
 
-export const metadata = { title: 'Hyunah • Portfolio', description: 'Designer‑minded Frontend Developer' }
+export const metadata = {
+  title: 'HYUNA • Portfolio',
+  description: 'Frontend Developer Portfolio',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico'
+  }
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body className="min-h-screen">{children}</body>
+    <html lang="ko" suppressHydrationWarning className="dark">
+      <body className="min-h-screen bg-brand-bg text-white antialiased">{children}</body>
     </html>
   )
 }

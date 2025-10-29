@@ -16,18 +16,18 @@ export default function PortfolioCard({ work, onOpen }: { work: Work; onOpen: (w
     <AnimatedCard className="group h-full overflow-hidden cursor-pointer" onClick={() => onOpen(work)}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between text-lg">
-          <span>{work.title}</span>
-          <ChevronRight className="opacity-0 group-hover:opacity-100 transition" />
+          <span className="line-clamp-2">{work.title}</span>
+          <ChevronRight className="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1 flex flex-col">
         {/* 프로젝트 기간 */}
         <p className="text-sm text-white/70 mb-3">{work.status || work.period}</p>
         {/* 간략한 설명 */}
-        <p className="text-xs text-white/60 line-clamp-3 mb-3">{work.desc}</p>
+        <p className="text-xs text-white/60 line-clamp-3 mb-3 flex-1">{work.desc}</p>
         {/* 팀/솔로 태그를 설명 밑에 배치 */}
         {teamTag && (
-          <div className="mt-2">
+          <div className="mt-auto">
             <Badge
               className="rounded-full text-xs font-semibold px-3 py-1"
               style={{

@@ -6,7 +6,7 @@ export const ABOUT = {
   contacts: [
     { label: 'Email', href: 'mailto:me@example.com' },
     { label: 'GitHub', href: 'https://github.com/yourname' },
-    { label: 'Resume', href: '/resume.pdf' }
+    { label: 'Resume', href: 'https://www.notion.so/hyonna/9e8f4b4b98784b32b586d73ab8457610' }
   ],
   skills: [
     'Next.js 15',

@@ -18,7 +18,8 @@ export default function EducationBlocks() {
               {EDUCATION.schools.map((s) => (
                 <div key={s.name} className="flex items-start justify-between">
                   <div>
-                    <p className="font-medium">{s.name}</p>
+                    <h4 className="font-medium text-white">{s.name}</h4>
+                    <p className="text-sm text-white/70">{s.major}</p>
                   </div>
                   <span className="text-xs text-white/60">{s.period}</span>
                 </div>

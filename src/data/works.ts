@@ -2,43 +2,160 @@ import type { Work } from '@/types/work'
 
 export const WORKS: Work[] = [
   {
+    title: '또하나의가족 - 디자인 시스템(Component KIT) 개발',
+    desc: 'Atomic Design 기반 UI 컴포넌트 시스템 구축',
+    url: '',
+    stack: [
+      'Next.js 14',
+      'TypeScript',
+      'MUI',
+      'Emotion',
+      'Styled-components',
+      'SCSS',
+      'Atomic Design',
+      'Component KIT'
+    ],
+    tags: ['팀', '웹', '신규개발'],
+    status: '2024.07 - 2024.11',
+    teamInfo: '프론트엔드 개발 100%',
+    company: '(주)헥톤프로젝트',
+    features: [
+      '🎨 디자인 시스템 설계',
+      '',
+      '📋 컴포넌트 아키텍처 구축',
+      'Atomic Design 기반 UI 컴포넌트 구조 설계 및 개발',
+      'Foundation (Color, Typo, Size 등) 표준 정의로 디자인 일관성 확보',
+      '공통 Props 구조 표준화로 컴포넌트 중복 제거 및 유지보수 효율 향상',
+      '',
+      '🎯 핵심 특징',
+      '브랜드 톤앤매너를 반영한 Atomic Design 시스템 설계 및 컴포넌트 구조화',
+      '모바일 반응형(360~430px) UI 구현 및 Pretendard 폰트 일괄 적용',
+      'Component KIT을 기반으로 다른 프로젝트에 적용하여 UI 개발 공수 약 30% 이상 단축',
+      '서비스 간 디자인 일관성 확보',
+      '',
+      '⚙️ 기술적 특징',
+      'Next.js 14 App Router, SSR 기반 프레임워크',
+      'MUI, Emotion, Styled-components, SCSS를 활용한 스타일링',
+      'Atomic Design 원칙 적용으로 재사용 가능한 컴포넌트 구조 설계',
+      '모바일 최적화 및 반응형 레이아웃 구현'
+    ],
+    contribution: '디자인 시스템 설계 및 컴포넌트 아키텍처 구축, 모바일 반응형 레이아웃과 테마 시스템 구현',
+    troubleshooting: [
+      {
+        title: '컴포넌트 재사용성과 유지보수성의 균형',
+        problem:
+          '다양한 페이지에서 사용될 수 있는 공통 컴포넌트를 설계하면서, 특정 페이지에 최적화된 커스터마이징과 범용성 사이의 균형을 맞추는 것이 어려웠습니다. 너무 범용적으로 만들면 각 페이지에서 추가 커스터마이징이 필요했고, 너무 특화하면 재사용성이 떨어지는 문제가 있었습니다.',
+        solution:
+          'Atomic Design 원칙을 적용하여 Atom, Molecule, Organism 단계로 컴포넌트를 분리했습니다. Foundation 레벨에서 Color, Typo, Size 등 표준을 정의하고, 재사용 가능한 Props 구조를 표준화하여 다양한 조합이 가능하도록 설계했습니다.',
+        reflection:
+          '컴포넌트 설계의 핵심은 적절한 추상화 수준을 찾는 것이라는 것을 깨달았습니다. 너무 추상적이면 사용성이 떨어지고, 너무 구체적이면 재사용성이 떨어지므로 프로젝트의 요구사항을 정확히 파악하고 균형점을 찾는 것이 중요합니다.'
+      },
+      {
+        title: '디자인 시스템 표준화와 브랜드 톤앤매너 반영',
+        problem:
+          '여러 페이지와 서비스에서 사용될 디자인 시스템을 표준화하면서도 회사의 브랜드 톤앤매너를 반영하는 것이 도전적이었습니다. 색상, 타이포그래피, 간격 등을 일관되게 정의하면서도 시각적으로 매력적인 디자인을 유지해야 했습니다.',
+        solution:
+          'Foundation 레벨에서 명확한 디자인 토큰을 정의하고, 브랜드 아이덴티티를 반영한 색상 팔레트와 타이포그래피 시스템을 구축했습니다. Pretendard 폰트를 일괄 적용하여 통일성을 확보하고, 모바일 반응형을 고려한 간격 시스템을 설계했습니다.',
+        reflection:
+          '디자인 시스템은 단순히 컴포넌트를 만드는 것이 아니라, 브랜드의 정체성을 코드로 표현하는 작업이라는 것을 배웠습니다. 일관성 있는 디자인 시스템은 개발 효율성뿐만 아니라 사용자 경험의 품질도 결정합니다.'
+      }
+    ]
+  },
+  {
+    title: '디자인 시스템(Component KIT) 기반 Storybook 개발',
+    desc: 'Storybook 환경 구성 및 컴포넌트 문서화',
+    url: '',
+    stack: ['Storybook', 'Chromatic', '@storybook/addon-docs'],
+    tags: ['솔로', '웹', '신규개발'],
+    status: '2024.07 - 2024.11',
+    teamInfo: 'Storybook 개발/문서화 100%',
+    company: '(주)헥톤프로젝트',
+    features: [
+      '📚 Storybook 환경 구축',
+      '',
+      '📋 주요 기능',
+      'Component KIT 기반 Storybook 환경 구성 및 문서화',
+      '컴포넌트별 Docs 자동화, 시각 테스트, 협업용 UI 가이드 구축',
+      'Atomic Design 구조 기반 Docs 카테고리화 (Foundation → Atom → Molecule → Organism)',
+      'Props Table, 상태별 프리뷰, 코드 예시 자동화',
+      '',
+      '🎯 핵심 특징',
+      'Storybook 기반 UI 컴포넌트 문서화 환경 구축',
+      '@storybook/addon-docs, Chromatic을 통한 자동 시각 테스트 및 배포',
+      '개발·디자인 간 협업 효율 향상',
+      'Chromatic CI 연동으로 브랜치별 Storybook 자동 배포 및 시각적 회귀 테스트 구축',
+      '디자이너가 실시간으로 UI 인터랙션 검증 가능한 환경 제공',
+      '',
+      '⚙️ 기술적 특징',
+      'Storybook을 통한 컴포넌트 독립적인 개발 환경 구축',
+      'Chromatic을 통한 시각적 회귀 테스트 자동화',
+      'Props Table 자동 생성으로 컴포넌트 사용법 명확화',
+      'Git 연동을 통한 브랜치별 Storybook 자동 배포'
+    ],
+    contribution: 'Component KIT 기반 Storybook 환경 구성 및 문서화 담당',
+    troubleshooting: [
+      {
+        title: '컴포넌트 문서화의 자동화와 완전성의 균형',
+        problem:
+          '많은 컴포넌트를 수동으로 문서화하는 것은 시간이 많이 걸리고, 자동화로는 충분한 설명을 제공하기 어려웠습니다. 특히 Props의 용도와 예시를 명확하게 전달하는 것이 도전적이었습니다.',
+        solution:
+          '@storybook/addon-docs를 활용하여 Props Table을 자동 생성하고, 각 Story마다 상태별 프리뷰와 코드 예시를 추가했습니다. Atomic Design 구조에 따라 카테고리화하여 디자이너와 개발자가 쉽게 찾아볼 수 있도록 구성했습니다.',
+        reflection:
+          '문서화는 자동화와 수동 설명의 적절한 조합이 중요하다는 것을 배웠습니다. Props Table은 자동으로 생성하되, 사용 예시와 상태별 프리뷰는 명확하게 제공하는 것이 협업 효율성을 높이는 핵심입니다.'
+      },
+      {
+        title: '시각적 회귀 테스트와 CI/CD 통합',
+        problem:
+          '컴포넌트를 수정할 때마다 수동으로 시각적 테스트를 진행하는 것은 번거롭고, 실수를 할 가능성이 있었습니다. 특히 브랜치별로 다른 상태의 컴포넌트를 테스트하는 것이 복잡했습니다.',
+        solution:
+          'Chromatic CI 연동을 통해 브랜치별 Storybook 자동 배포 및 시각적 회귀 테스트를 구축했습니다. PR마다 자동으로 스냅샷을 비교하여 변화를 감지하고, 디자이너가 실시간으로 검증할 수 있는 환경을 제공했습니다.',
+        reflection:
+          'CI/CD 파이프라인을 통한 자동화는 개발 생산성을 크게 향상시키지만, 설정과 유지보수에도 신경을 써야 한다는 것을 배웠습니다. 자동화된 테스트가 개발자와 디자이너 모두의 협업을 더 원활하게 만든다는 것을 깨달았습니다.'
+      }
+    ]
+  },
+  {
     title: '또하나의가족 플랫폼 리뉴얼',
     desc: '요양정보 맞춤형 서비스 플랫폼',
     url: 'https://ddoga.co.kr',
-    stack: ['Next.js 14', 'TypeScript', 'MUI', 'Storybook', 'Zustand', 'Jenkins', 'Firebase GA'],
-    stackCategories: [
-      {
-        category: '프론트엔드',
-        technologies: ['Next.js 14', 'TypeScript', 'MUI', 'Emotion', 'Styled-components']
-      },
-      {
-        category: '상태관리',
-        technologies: ['Zustand', 'Context API']
-      },
-      {
-        category: 'API & 인증',
-        technologies: ['Axios', 'Fetch', 'JWT']
-      },
-      {
-        category: '개발도구',
-        technologies: ['Storybook']
-      },
-      {
-        category: 'CI/CD',
-        technologies: ['Jenkins']
-      },
-      {
-        category: '분석도구',
-        technologies: ['Firebase GA']
-      }
+    stack: [
+      'Next.js 14',
+      'TypeScript',
+      'MUI',
+      'Emotion',
+      'Styled-components',
+      'Zustand',
+      'Context API',
+      'Axios',
+      'Fetch',
+      'JWT',
+      'Storybook',
+      'Jenkins',
+      'Firebase GA'
     ],
-    tags: ['솔로', '웹', '요양정보'],
+    tags: ['팀', '웹', '신규개발'],
     status: '2024.07 - 2025.07 (2025.07.22 런칭)',
     teamInfo: '프론트엔드 개발 100%',
-    company: '헥톤프로젝트',
+    company: '(주)헥톤프로젝트',
     features: [
+      '📋 주요 기능',
+      '시설 찾기: 요양원, 요양병원, 실버타운, 주야간보호, 단기보호, 방문요양, 방문간호, 방문목욕 등',
+      '시설 상세 정보: 기본정보, 비용, 갤러리, 식단표, 프로그램, 위치정보, 후기 등',
+      '온라인 상담: 지정상담을 통한 맞춤형 요양시설 추천 및 상담 서비스',
+      '바로 찾아드림: 사용자 조건에 맞는 요양시설을 빠르게 찾아주는 서비스',
+      '커뮤니티: "요양톡톡" 커뮤니티를 통한 사용자 간 정보 공유',
+      '스토어: 요양 관련 상품 판매 (복지용구 등)',
+      '마이페이지: 사용자 정보 관리, 상담 내역, 즐겨찾기, 주문 내역 등',
+      '',
+      '🎯 핵심 특징',
+      '맞춤형 추천: 사용자 조건과 위치 기반 시설 추천',
+      '실시간 상담: 전문가와의 실시간 온라인 상담',
+      '종합 정보: 시설의 모든 정보를 한 곳에서 확인',
+      '사용자 중심: 직관적인 UI/UX로 쉬운 사용성 제공',
+      '',
+      '⚙️ 기술적 특징',
+      'Next.js 14 App Router 기반 모던 웹사이트 구축',
       'Atomic Design 시스템 설계 및 Storybook 도입으로 UI 재사용성 증가',
-      'Next.js SSR 적용으로 초기 로딩 속도 개선, SEO 강화',
       'Zustand + Context API + JWT 기반 인증·상태 관리 구현',
       'Jenkins CI/CD 파이프라인 구축으로 배포 자동화 및 운영 병목 제거',
       'Firebase GA 이벤트 트래킹 및 Jira 기반 협업 프로세스 체계화'
@@ -66,14 +183,114 @@ export const WORKS: Work[] = [
     ]
   },
   {
+    title: '또하나의가족 SSO 기반 회원 인증 서비스 리뉴얼',
+    desc: '또하나의가족 플랫폼을 위한 통합 로그인·회원 인증 서비스',
+    url: 'https://sign.ddoga.co.kr/sign-in',
+    stack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Material-UI',
+      'Emotion',
+      'SCSS',
+      'TanStack Query',
+      'Zustand',
+      'React Hook Form',
+      'Axios',
+      'NextAuth.js',
+      'JWT',
+      'Crypto-JS',
+      'Firebase Analytics',
+      'Firebase Performance',
+      'Storybook',
+      'Jenkins',
+      'MSW'
+    ],
+    tags: ['팀', '웹', '신규개발·개선'],
+    status: '2024.07 - 2025.07 (2025.07.22 런칭)',
+    teamInfo: '프론트엔드 개발 100%',
+    company: '(주)헥톤프로젝트',
+    features: [
+      '',
+      '📋 주요 기능',
+      '이메일/비밀번호 로그인: 전통적인 인증 방식',
+      '카카오/네이버 SNS 로그인: 소셜 로그인 연동',
+      '회원가입: 이메일 인증, SMS 인증을 통한 단계별 가입',
+      '비밀번호 찾기/재설정: 보안을 고려한 계정 복구',
+      '이메일 중복 체크: 실시간 중복 검증',
+      '휴대폰 번호 인증: SMS 기반 본인 인증',
+      '마케팅 수신 동의 관리: 개인정보 보호 준수',
+      '계정 정보 찾기: 사용자 편의성 향상',
+      '문의하기: 고객 지원 시스템',
+      '',
+      '🎯 핵심 특징',
+      '다중 플랫폼 지원: 일반 사용자용과 파트너스용 두 가지 버전',
+      '단계별 인증: 이메일 → SMS → 비밀번호 설정의 순차적 프로세스',
+      'SNS 통합: 카카오, 네이버 소셜 로그인 지원',
+      '실시간 알림: SMS 인증, 토스트 메시지, 다이얼로그 시스템',
+      '반응형 UI: 모바일 최적화된 사용자 인터페이스',
+      '보안 강화: JWT 토큰 기반 인증, 암호화된 데이터 전송',
+      '',
+      '⚙️ 기술적 특징',
+      'Next.js App Router: 최신 Next.js 14.2.1 기반 풀스택 프레임워크',
+      '타입 안전성: TypeScript 완전 적용으로 개발 생산성 향상',
+      '상태 관리: Zustand를 활용한 경량 전역 상태 관리',
+      '서버 상태: TanStack Query를 활용한 효율적인 서버 상태 관리',
+      '폼 관리: React Hook Form + MUI 통합으로 안정적인 폼 처리',
+      '스타일링: Emotion + MUI + SCSS 조합으로 일관된 디자인 시스템',
+      '에러 처리: 체계적인 에러 코드 및 메시지 관리',
+      'CI/CD: Jenkins 파이프라인을 통한 자동화된 배포',
+      '모니터링: Firebase Analytics & Performance 통합'
+    ],
+    contribution: '디자인 시스템 구축부터 전체 개발 진행',
+    troubleshooting: [
+      {
+        title: 'Firebase Performance 초기화 실패',
+        problem:
+          '개발 환경에서 Firebase Performance가 불필요하게 초기화되어 오류가 발생했습니다. 프로덕션 환경에서는 정상 작동하지만 개발 환경에서는 성능 모니터링이 필요하지 않음에도 불구하고 초기화를 시도하여 에러가 발생했습니다.',
+        solution:
+          '환경별 조건부 초기화 로직을 추가하여 개발 환경에서는 Performance 초기화를 제외하도록 구현했습니다. try-catch를 활용하여 안전한 초기화 패턴을 적용했습니다.',
+        reflection:
+          '환경별 설정 분리의 중요성과 try-catch를 통한 안전한 초기화 패턴을 학습했습니다. 개발 환경과 프로덕션 환경의 차이점을 고려한 설계가 필요하다는 것을 깨달았습니다.'
+      },
+      {
+        title: 'SMS 인증 횟수 제한 처리',
+        problem:
+          'SMS 인증 요청 횟수 제한 시 사용자 경험이 저하되는 문제가 있었습니다. 하루 전송 횟수를 초과한 사용자에게 적절한 안내가 없어 혼란을 겪었고, 재전송 간격 제어가 부족했습니다.',
+        solution:
+          '하루 전송 횟수 제한 및 재전송 간격 제어 로직을 구현했습니다. 사용자에게 명확한 안내 메시지를 제공하고, 제한 상황을 직관적으로 표시하도록 개선했습니다.',
+        reflection:
+          '사용자 피드백을 통한 UX 개선의 중요성과 서비스 제한 정책 구현 방법을 학습했습니다. 보안과 사용자 편의성 사이의 균형을 맞추는 것이 중요하다는 것을 깨달았습니다.'
+      },
+      {
+        title: 'Blue-Green 배포 환경 관리',
+        problem:
+          '무중단 배포를 위한 환경 전환 시 복잡한 설정 관리가 필요했습니다. Blue-Green 배포를 수동으로 관리하면서 실수할 가능성이 높고, 배포 과정이 복잡했습니다.',
+        solution:
+          'Jenkins 파이프라인을 통한 자동화된 Blue-Green 배포 시스템을 구축했습니다. AWS ELB를 활용하여 무중단 배포를 구현하고, 배포 과정을 자동화했습니다.',
+        reflection:
+          'CI/CD 파이프라인 설계와 AWS ELB를 활용한 무중단 배포 전략을 학습했습니다. 자동화를 통한 배포 안정성과 효율성의 중요성을 깨달았습니다.'
+      },
+      {
+        title: 'SNS 로그인 시 회원가입 자동 진행',
+        problem:
+          'SNS 로그인 시 미가입 사용자의 경우 별도 회원가입 절차가 필요했습니다. 사용자가 SNS 로그인을 시도했지만 계정이 없을 경우 복잡한 회원가입 과정을 거쳐야 했습니다.',
+        solution:
+          'SNS 토큰을 활용한 자동 회원가입 플로우를 구현했습니다. 미가입 사용자가 SNS 로그인을 시도할 경우 자동으로 회원가입 절차를 진행하도록 개선했습니다.',
+        reflection:
+          '사용자 경험 최적화를 위한 자동화된 플로우 설계의 중요성을 학습했습니다. 기술적 완벽성보다 사용자가 원하는 동작을 구현하는 것이 우선이라는 것을 깨달았습니다.'
+      }
+    ]
+  },
+  {
     title: 'ProBit Global - Buy Crypto UI/UX 개선',
     desc: '암호화폐 거래 플랫폼',
     url: 'https://www.probit.com/en-us/buy-crypto',
     stack: ['Angular', 'SCSS', 'NgRx', 'RxJS'],
-    tags: ['팀', '웹', 'UX'],
+    tags: ['팀', '웹', '개선'],
     status: '2024.01 - 2024.02',
     teamInfo: '프론트엔드 개발 100%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       '거래 플로우를 단일 페이지로 통합하여 사용자 편의성 향상',
       'GNB(Global Navigation Bar)에 Deposit 링크 추가로 입금 페이지 접근성 개선',
@@ -99,10 +316,10 @@ export const WORKS: Work[] = [
     desc: 'KYC 인증 시스템',
     url: 'https://www.probit.com',
     stack: ['Angular', 'SCSS', 'NgRx', 'RxJS'],
-    tags: ['팀', '웹', '인증'],
+    tags: ['팀', '웹', '신규개발'],
     status: '2023.11 - 2023.12',
     teamInfo: '프론트엔드 개발 100%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       'KYC 프로세스 시작 단계에서 기본 정보 입력 페이지 신규 개발',
       '본인인증 절차에 필요한 개인정보 효율적 수집 프로세스 확립',
@@ -128,10 +345,10 @@ export const WORKS: Work[] = [
     desc: '파생상품 거래 플랫폼',
     url: 'https://www.probit.com',
     stack: ['React', 'TypeScript', 'Styled-components', 'Recoil', 'WebSocket'],
-    tags: ['팀', '웹', '실시간'],
+    tags: ['팀', '웹', '신규개발'],
     status: '2023.09 - 2023.11',
     teamInfo: '프론트엔드 개발 20%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       'WebSocket API를 활용한 상품 현황 실시간 제공',
       '오더북 실시간 업데이트 기능 구현',
@@ -157,10 +374,10 @@ export const WORKS: Work[] = [
     desc: '마이페이지 UI 개선',
     url: 'https://www.probit.com',
     stack: ['Angular', 'SCSS', 'NgRx', 'RxJS'],
-    tags: ['팀', '웹', 'UX'],
+    tags: ['팀', '웹', '개선'],
     status: '2023.08 - 2023.09',
     teamInfo: '프론트엔드 개발 100%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       '기능별 탭(Tab) UI 구조로 개편하여 사용자 탐색성 향상',
       '사용자가 필요한 기능을 빠르게 찾을 수 있는 구조 설계',
@@ -186,10 +403,10 @@ export const WORKS: Work[] = [
     desc: '메인페이지 리뉴얼',
     url: 'https://www.probit.com/en-us/',
     stack: ['Angular', 'Angular Universal', 'SCSS', 'Chart.js', 'Swiper.js'],
-    tags: ['팀', '웹', 'SSR'],
+    tags: ['팀', '웹', '신규개발'],
     status: '2023.04 - 2023.08',
     teamInfo: '프론트엔드 개발 100%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       'SSR 개발을 통한 클라이언트 페이지 로딩 속도 개선',
       'Lazy loading 적용으로 이미지 용량 최적화',
@@ -215,10 +432,10 @@ export const WORKS: Work[] = [
     desc: '의료진 솔루션',
     url: '',
     stack: ['React', 'Styled-components', 'Recoil'],
-    tags: ['솔로', '의료', '실시간'],
+    tags: ['솔로', '의료', '신규개발'],
     status: '2023.01 - 2023.02',
     teamInfo: '프론트엔드 개발 100%',
-    company: '아이넥스코퍼레이션',
+    company: '(주)아이넥스코퍼레이션',
     features: [
       'React 기반 솔루션 UI 설계 및 개발',
       '의사와 환자 간 실시간 결과 공유 기능 구현',
@@ -244,10 +461,10 @@ export const WORKS: Work[] = [
     desc: '자재정보 검색 시스템',
     url: '',
     stack: ['Angular', 'ASP.NET', 'C#', 'MS-SQL', 'HTML', 'CSS'],
-    tags: ['팀', '웹', '검색'],
+    tags: ['팀', '웹', '신규개발·개선'],
     status: '2021.10 - 2022.02',
     teamInfo: '1차 프론트엔드 20% / 2차 풀스택 100% / 3차 풀스택 30%',
-    company: 'BIMPeers',
+    company: '빔피어스(BIMPeers)',
     features: [
       'Angular + MS-SQL 기반 검색 시스템 구축으로 사내 업무 효율화',
       '사용자/관리자 웹사이트 구축 및 유지보수',
@@ -273,10 +490,10 @@ export const WORKS: Work[] = [
     desc: '협회 웹사이트 리뉴얼',
     url: 'https://www.buildingsmart.or.kr/',
     stack: ['ASP.NET MVC', 'C#', 'MS-SQL', 'HTML', 'CSS', 'JavaScript'],
-    tags: ['솔로', '웹', '결제'],
+    tags: ['솔로', '웹', '신규개발'],
     status: '2020.01 - 2021.03',
     teamInfo: '개발 100%',
-    company: 'BIMPeers',
+    company: '빔피어스(BIMPeers)',
     features: [
       '사용자·관리자 웹사이트 리뉴얼 및 DB 마이그레이션',
       '토스페이먼츠 결제 API 연동을 통한 온라인 결제 시스템 구축',
@@ -302,10 +519,10 @@ export const WORKS: Work[] = [
     desc: '행사 관리 시스템',
     url: 'https://event.buildingsmart.or.kr/Conference/2020',
     stack: ['ASP.NET MVC', 'C#', 'MS-SQL', 'HTML', 'CSS', 'JavaScript'],
-    tags: ['솔로', '웹', '모듈화'],
+    tags: ['솔로', '웹', '신규개발'],
     status: '2021.01 - 2021.12',
     teamInfo: '관리자 화면 디자인 100% / 개발 100%',
-    company: 'BIMPeers',
+    company: '빔피어스(BIMPeers)',
     features: [
       'Forum / Conference / Awards 행사 웹사이트 구축 및 시스템 모듈화',
       '매년 행사 시 데이터만 교체하여 재사용 가능한 구조 설계',
@@ -331,10 +548,10 @@ export const WORKS: Work[] = [
     desc: '공모전 관리 플랫폼',
     url: '',
     stack: ['ASP.NET', 'C#', 'MS-SQL', 'HTML', 'CSS', 'JavaScript'],
-    tags: ['솔로', '웹', '공모'],
+    tags: ['솔로', '웹', '개선'],
     status: '2019.12 - 2021.12',
     teamInfo: '프론트엔드 개발 100%, 디자인 100%',
-    company: 'BIMPeers',
+    company: '빔피어스(BIMPeers)',
     features: [
       '국제학생건축상 공모·참가신청 웹페이지 구축',
       '매년 데이터만 교체 가능한 구조로 디자인/시스템 모듈화',
@@ -370,10 +587,10 @@ export const WORKS: Work[] = [
         technologies: ['NgRx', 'RxJS']
       }
     ],
-    tags: ['팀', '웹', 'SSR'],
+    tags: ['팀', '웹', '신규개발·개선'],
     status: '2023.02 - 2023.04',
     teamInfo: '프론트엔드 개발 100%',
-    company: 'ProBit Global',
+    company: '디앤에스에버(주)',
     features: [
       'React 기반 Help Center 페이지를 Angular 기반으로 재개발',
       'Angular Universal 기반 SSR로 SEO 문제 개선',
@@ -399,10 +616,10 @@ export const WORKS: Work[] = [
     desc: 'BIM 콘텐츠 플랫폼',
     url: '',
     stack: ['ASP.NET', 'C#', 'MS-SQL', 'REST API', 'HTML', 'CSS'],
-    tags: ['팀', '웹', 'API'],
+    tags: ['팀', '웹', '신규개발·개선'],
     status: '2019.12 - 2021.12',
     teamInfo: '개발 100%, 디자인 100%',
-    company: 'BIMPeers',
+    company: '빔피어스(BIMPeers)',
     features: [
       'BIM 라이브러리 데이터를 REST API와 연동한 검색 시스템 구축',
       '설계 실무에 활용 가능한 검색 기능 제공',
@@ -420,6 +637,56 @@ export const WORKS: Work[] = [
           'REST API를 활용한 모듈화된 검색 시스템을 구축하고, 데이터베이스 인덱싱과 쿼리 최적화를 통해 검색 성능을 향상시켰습니다. 캐싱 전략을 도입하여 반복적인 검색 요청에 대한 응답 속도를 개선했습니다.',
         reflection:
           '대용량 데이터를 다룰 때는 단순한 검색 기능 구현을 넘어서 성능 최적화와 확장성을 고려한 아키텍처 설계가 중요하다는 것을 깨달았습니다.'
+      }
+    ]
+  },
+  {
+    title: '개인 포트폴리오 웹사이트',
+    desc: 'Next.js 14 기반 모던 포트폴리오 웹사이트',
+    url: 'https://hyonna-portfolio.vercel.app',
+    stack: [
+      'Next.js 14',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'React Hook Form',
+      'Zustand',
+      'Vercel',
+      'Lucide React'
+    ],
+    tags: ['솔로', '웹', '신규개발'],
+    status: '2025.09 - 2025.10',
+    teamInfo: '개발 100%',
+    company: 'Toy Project',
+    features: [
+      'Next.js 14 App Router 기반 모던 웹사이트 구축',
+      'Framer Motion을 활용한 부드러운 애니메이션 구현',
+      '반응형 디자인으로 모든 디바이스에서 최적화된 사용자 경험',
+      'TypeScript로 타입 안정성 확보',
+      'Tailwind CSS로 효율적인 스타일링',
+      '포트폴리오 필터링 기능 (전체/회사/Toy Project)',
+      'Vercel을 통한 자동 배포 및 성능 최적화',
+      '다크 테마와 핑크 그라데이션 디자인 시스템'
+    ],
+    contribution: '기획·디자인·개발 전담',
+    troubleshooting: [
+      {
+        title: '포트폴리오 필터링 시스템과 상태 관리',
+        problem:
+          '포트폴리오 프로젝트를 카테고리별로 필터링하는 기능을 구현하면서, 상태 관리와 UI 업데이트 간의 동기화가 복잡했습니다. 또한 필터링된 결과에 따라 동적으로 구분선을 표시하는 로직이 까다로웠습니다.',
+        solution:
+          'React useState를 활용하여 필터 상태를 관리하고, 필터링 로직을 컴포넌트 내부에서 처리했습니다. 조건부 렌더링을 통해 구분선 표시를 구현하고, 필터 버튼의 활성 상태를 명확하게 표시하도록 했습니다.',
+        reflection:
+          '상태 관리와 UI 로직을 분리하여 생각하는 것의 중요성을 깨달았습니다. 사용자 경험을 고려한 직관적인 필터링 인터페이스 설계가 핵심이었습니다.'
+      },
+      {
+        title: '반응형 디자인과 애니메이션 최적화',
+        problem:
+          '다양한 디바이스에서 일관된 사용자 경험을 제공하면서도 부드러운 애니메이션을 구현하는 것이 도전이었습니다. 특히 모바일에서의 터치 인터랙션과 데스크톱에서의 마우스 인터랙션을 모두 고려해야 했습니다.',
+        solution:
+          'Tailwind CSS의 반응형 클래스를 활용하여 브레이크포인트별로 최적화된 레이아웃을 구현했습니다. Framer Motion의 useReducedMotion 훅을 사용하여 접근성을 고려한 애니메이션을 적용했습니다.',
+        reflection:
+          '반응형 디자인은 단순히 화면 크기에 맞추는 것이 아니라, 각 디바이스의 특성을 고려한 사용자 경험을 제공하는 것이 중요하다는 것을 배웠습니다.'
       }
     ]
   }
