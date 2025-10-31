@@ -656,7 +656,7 @@ export const WORKS: Work[] = [
     ],
     tags: ['솔로', '웹', '신규개발'],
     status: '2025.09 - 2025.10',
-    teamInfo: '개발 100%',
+    teamInfo: '기획/디자인/개발 100%',
     company: 'Toy Project',
     features: [
       'Next.js 14 App Router 기반 모던 웹사이트 구축',

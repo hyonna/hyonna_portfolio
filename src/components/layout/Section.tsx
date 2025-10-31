@@ -4,8 +4,8 @@ import { colors } from '@/lib/theme'
 
 export default function Section({ id, title, icon: Icon, children }: any) {
   return (
-    <section id={id} className="scroll-mt-24 py-16 sm:py-24 border-b" style={{ borderColor: colors.border }}>
-      <div className="max-w-5xl mx-auto px-6">
+    <section id={id} className="scroll-mt-24 py-12 sm:py-16 lg:py-24 border-b" style={{ borderColor: colors.border }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {title && (
           <div className="flex items-center gap-3 mb-8">
             <div className="h-9 w-9 grid place-items-center rounded-xl" style={{ background: colors.border }}>

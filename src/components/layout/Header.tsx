@@ -60,10 +60,15 @@ export default function Header() {
   }
   return (
     <header
-      className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b"
-      style={{ borderColor: colors.border }}
+      className="sticky z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b"
+      style={{ 
+        borderColor: colors.border,
+        top: 'env(safe-area-inset-top, 0px)',
+        paddingTop: 'calc(0.75rem + env(safe-area-inset-top, 0px))',
+        paddingBottom: '0.75rem'
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <a
           href="#about"
           className="font-semibold tracking-tight"

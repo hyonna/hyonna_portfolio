@@ -18,7 +18,13 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0"
+      style={{
+        paddingTop: 'calc(env(safe-area-inset-top, 0px) + 4rem)',
+        paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 4rem)'
+      }}
+    >
       {/* 배경 그라데이션 */}
       <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden>
         <motion.div
@@ -67,11 +73,11 @@ export default function Hero() {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <motion.div className="max-w-6xl mx-auto px-6 text-center" style={{ y, opacity, scale }}>
+      <motion.div className="max-w-6xl mx-auto px-4 sm:px-6 text-center w-full" style={{ y, opacity, scale }}>
         <motion.div variants={heroParent} initial={false} animate="visible">
           <FadeIn onMount>
             <motion.h1
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight"
+              className="text-2xl sm:text-4xl lg:text-6xl font-extrabold leading-tight tracking-tight px-2"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -110,12 +116,12 @@ export default function Hero() {
               transformOrigin: 'center',
               backgroundImage: `linear-gradient(90deg, ${colors.pink}, ${colors.pinkSoft})`
             }}
-            className="h-[3px] w-32 mx-auto mt-8 rounded-full"
+            className="h-[3px] w-32 mx-auto mt-6 sm:mt-8 rounded-full"
           />
 
           <FadeIn onMount delay={0.4}>
             <motion.p
-              className="mt-8 text-lg sm:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed"
+              className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -127,7 +133,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
-                className="mx-2"
+                className="mx-1 sm:mx-2"
               >
                 디자인 감각과 기술 역량을 갖춘
               </motion.span>
@@ -141,7 +147,10 @@ export default function Hero() {
 
       {/* 스크롤 인디케이터 */}
       <motion.div
-        className="absolute bottom-20 left-1/2 -translate-x-1/2"
+        className="absolute left-1/2 -translate-x-1/2"
+        style={{
+          bottom: 'max(6rem, calc(6rem + env(safe-area-inset-bottom, 0px)))'
+        }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.8 }}

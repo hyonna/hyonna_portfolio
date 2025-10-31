@@ -36,7 +36,7 @@ export default function PortfolioGrid() {
   return (
     <>
       {/* 포트폴리오 타이틀과 필터 버튼들 */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div className="flex items-center gap-3">
           <div className="h-9 w-9 grid place-items-center rounded-xl" style={{ background: colors.border }}>
             <ExternalLink size={18} />
@@ -47,10 +47,10 @@ export default function PortfolioGrid() {
         </div>
 
         {/* 필터 버튼들 */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent w-32 ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent flex-1 sm:flex-none sm:w-32 ${
               filter === 'all'
                 ? 'bg-gradient-to-r from-pink-500 to-pink-300 text-black shadow-lg shadow-pink-500/25 scale-105'
                 : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white hover:scale-105 border border-white/10 active:scale-95'
@@ -61,7 +61,7 @@ export default function PortfolioGrid() {
           </button>
           <button
             onClick={() => setFilter('company')}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent w-32 ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent flex-1 sm:flex-none sm:w-32 ${
               filter === 'company'
                 ? 'bg-gradient-to-r from-pink-500 to-pink-300 text-black shadow-lg shadow-pink-500/25 scale-105'
                 : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white hover:scale-105 border border-white/10 active:scale-95'
@@ -72,7 +72,7 @@ export default function PortfolioGrid() {
           </button>
           <button
             onClick={() => setFilter('toy')}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent w-32 ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ease-out transform focus:outline-none focus:ring-0 focus:border-transparent flex-1 sm:flex-none sm:w-32 ${
               filter === 'toy'
                 ? 'bg-gradient-to-r from-pink-500 to-pink-300 text-black shadow-lg shadow-pink-500/25 scale-105'
                 : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white hover:scale-105 border border-white/10 active:scale-95'

@@ -8,7 +8,13 @@ export default function FloatingActions({ email = 'yha0118@gmail.com' }: { email
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <div className="fixed bottom-5 right-5 z-[70] flex flex-col items-end gap-3">
+    <div 
+      className="fixed right-5 z-[70] flex flex-col items-end gap-3 floating-actions transition-opacity duration-200"
+      style={{ 
+        bottom: 'calc(1.25rem + env(safe-area-inset-bottom, 0px))',
+        paddingRight: 'env(safe-area-inset-right, 0px)'
+      }}
+    >
       {/* 이메일 보내기 */}
       <motion.a
         initial={false}

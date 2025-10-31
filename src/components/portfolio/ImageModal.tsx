@@ -13,19 +13,28 @@ interface ImageModalProps {
 export default function ImageModal({ imageUrl, imageTitle, onClose }: ImageModalProps) {
   const reduce = useReducedMotion()
 
-  // 모달이 열릴 때 body 스크롤 막기
+  // 모달이 열릴 때 body 스크롤 막기 및 플로팅 버튼 숨기기
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
 
-    // 컴포넌트가 언마운트될 때 스크롤 복원
+    // 컴포넌트가 언마운트될 때 스크롤 복원 및 클래스 제거
     return () => {
       document.body.style.overflow = 'unset'
+      document.body.classList.remove('modal-open')
     }
   }, [])
 
   return (
     <div
-      className="fixed inset-0 z-[80] grid place-items-center p-4"
+      className="fixed z-[80] grid place-items-center"
+      style={{
+        top: 'env(safe-area-inset-top, 0px)',
+        right: 'env(safe-area-inset-right, 0px)',
+        bottom: 'env(safe-area-inset-bottom, 0px)',
+        left: 'env(safe-area-inset-left, 0px)',
+        padding: '1rem'
+      }}
       role="dialog"
       aria-modal="true"
       onKeyDown={(e) => {
@@ -81,10 +90,12 @@ export default function ImageModal({ imageUrl, imageTitle, onClose }: ImageModal
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: reduce ? 0 : 0.2, delay: 0.1 }}
         onClick={onClose}
-        className="fixed top-6 right-6 z-[90] w-12 h-12 rounded-full border backdrop-blur-md
+        className="fixed z-[90] w-12 h-12 rounded-full border backdrop-blur-md
                    flex items-center justify-center text-lg font-bold
                    hover:scale-105 transition-transform duration-200"
         style={{
+          top: 'calc(1.5rem + env(safe-area-inset-top, 0px))',
+          right: 'calc(1.5rem + env(safe-area-inset-right, 0px))',
           backgroundColor: colors.pink,
           borderColor: colors.pink,
           color: colors.bg
