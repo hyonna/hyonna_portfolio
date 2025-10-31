@@ -1,4 +1,5 @@
 import './globals.css'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata = {
   title: 'HYUNA • Portfolio',
@@ -13,7 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" suppressHydrationWarning className="dark">
-      <body className="min-h-screen bg-brand-bg text-white antialiased">{children}</body>
+      <body className="min-h-screen bg-brand-bg text-white antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
