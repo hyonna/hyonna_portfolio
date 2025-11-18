@@ -17,7 +17,7 @@ export const WORKS: Work[] = [
     ],
     tags: ['팀', '웹', '신규개발'],
     status: '2024.07 - 2024.11',
-    teamInfo: '프론트엔드 개발 100%',
+    teamInfo: '프론트엔드 개발자 2명 투입 - 본인 80%',
     company: '(주)헥톤프로젝트',
     features: [
       '🎨 디자인 시스템 설계',
@@ -135,7 +135,7 @@ export const WORKS: Work[] = [
     ],
     tags: ['팀', '웹', '신규개발'],
     status: '2024.07 - 2025.07 (2025.07.22 런칭)',
-    teamInfo: '프론트엔드 개발 100%',
+    teamInfo: '프론트개발자 4명 투입 - 본인 60% (커머스 서비스 제외)',
     company: '(주)헥톤프로젝트',
     features: [
       '📋 주요 기능',
@@ -208,7 +208,7 @@ export const WORKS: Work[] = [
     ],
     tags: ['팀', '웹', '신규개발·개선'],
     status: '2024.07 - 2025.07 (2025.07.22 런칭)',
-    teamInfo: '프론트엔드 개발 100%',
+    teamInfo: '프론트엔드 개발자 2명 - 본인 70%',
     company: '(주)헥톤프로젝트',
     features: [
       '',
